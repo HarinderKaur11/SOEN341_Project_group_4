@@ -1,0 +1,4 @@
+
+Tetranacci(10) returns 56
+
+The method has been called 241 times. It took 211832 nanoseconds.
