@@ -1,10 +1,10 @@
 (function(angular) {
-	angular.module('main').config(['$stateProvider', function($stateProvider) {
+	angular.module('main').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		$stateProvider.state('test', {
 			url: '/test',
 			templateUrl: '/templates/test.html'
 		});
 
-		$stateProvider.otherwise('test');
+		$urlRouterProvider.otherwise('/test');
 	}]);
 })(angular);
