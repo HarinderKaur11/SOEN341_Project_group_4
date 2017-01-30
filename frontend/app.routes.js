@@ -4,5 +4,7 @@
 			url: '/test',
 			templateUrl: '/templates/test.html'
 		});
+
+		$stateProvider.otherwise('test');
 	}]);
 })(angular);
