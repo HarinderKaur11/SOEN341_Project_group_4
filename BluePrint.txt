@@ -13,7 +13,7 @@ The ___ reflects student/teacher business as an E-Learning system and priorities
 |      Name       |                Description                 |     Sprint      |      
 |-----------------|--------------------------------------------|-----------------|
 | Enrol Profile   | The system shall enable a user to create   |        1        |
-|                 | an acocunt                                 |                 |
+|                 | an account                                 |                 |
 |-----------------|--------------------------------------------|-----------------|
 |                 |                                            |                 |
 |                 |                                            |                 |
