@@ -1,0 +1,29 @@
+------------------------------------------------Functional Design------------------------------------------------
+ 
+                    Objective 
+The ___ reflects student/teacher business as an E-Learning system and priorities and supports the following processes:
+-Enrolment
+-File Upload/Download 
+-Grading
+-Announcements
+-Messaging
+
+                              High-Level Requirements
+----------------------------------------------------------------------------------
+|      Name       |                Description                 |     Sprint      |      
+|-----------------|--------------------------------------------|-----------------|
+| Enrol Profile   | The system shall enable a user to create   |        1        |
+|                 | an acocunt                                 |                 |
+|-----------------|--------------------------------------------|-----------------|
+|                 |                                            |                 |
+|                 |                                            |                 |
+|-----------------|--------------------------------------------|-----------------|
+|                 |                                            |                 |
+|                 |                                            |                 |
+|-----------------|--------------------------------------------|-----------------|
+| Manage Profile  | The system shall enable a user to          |        2        |
+|                 | manange certain data within a profile      |                 |    
+----------------------------------------------------------------------------------
+
+......
+
