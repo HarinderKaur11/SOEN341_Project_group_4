@@ -28,12 +28,10 @@ module.exports = function(){
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
 	app.use(serverLogging);
-
-	app.use(express.static(appRoot + '/static/'));
-	app.use('/images', express.static('images'));
+	app.use(express.static(appRoot + '/frontend'));
 
 	// API routing rules will be included here
-	require(appRoot + '/routes/authentication.routes.js')(router);
+	require(appRoot + '/backend/routes/authentication.routes.js')(router);
 
 	app.use(router);
 

@@ -1,10 +1,12 @@
 {
   "name": "soen341backend",
   "version": "1.0.0",
-  "description": "Backend for our elearning project in soen 341 at concordia",
+  "description": "Elearning project in soen 341 at concordia",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:prod": "port=80 pm2 start app.js",
+    "stop:prod": "pm2 stop app"
   },
   "repository": {
     "type": "git",
