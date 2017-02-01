@@ -1,7 +1,7 @@
 ------------------------------------------------Functional Design------------------------------------------------
  
                     Objective 
-The ___ reflects student/teacher business as an E-Learning system and priorities and supports the following processes:
+The e-Learner reflects student/teacher business as an E-Learning system and priorities and supports the following processes:
 -Enrolment
 -File Upload/Download 
 -Grading
@@ -12,18 +12,32 @@ The ___ reflects student/teacher business as an E-Learning system and priorities
 ----------------------------------------------------------------------------------
 |      Name       |                Description                 |     Sprint      |      
 |-----------------|--------------------------------------------|-----------------|
-| Enrol Profile   | The system shall enable a user to create   |        1        |
-|                 | an account                                 |                 |
-|-----------------|--------------------------------------------|-----------------|
-|                 |                                            |                 |
-|                 |                                            |                 |
-|-----------------|--------------------------------------------|-----------------|
-|                 |                                            |                 |
-|                 |                                            |                 |
-|-----------------|--------------------------------------------|-----------------|
-| Manage Profile  | The system shall enable a user to          |        2        |
-|                 | manange certain data within a profile      |                 |    
+| Set Up Server   | Use AWS to host our files and configure    |        1        |
+|                 | the database and persistence with node     |                 |    
+----------------------------------------------------------------------------------
+| Design/Implement| Create the HTML and CSS for the Home Page  |        1        |
+| Home page       |                                            |                 |    
+----------------------------------------------------------------------------------
+| Design/Implement| Create the HTML and CSS for the Login Page |        1        |
+| Login page      |                                            |                 |    
+----------------------------------------------------------------------------------
+| Front End Login | Make authentication API call               |        1        |
+| Request         |                                            |                 |    
+----------------------------------------------------------------------------------
+| Create Auth API | Create NodeJS API                          |        1        |
+|                 |                                            |                 |    
+----------------------------------------------------------------------------------
+| Enhance Auth API| Add persistance to login API               |        2        |
+|                 |                                            |                 |    
+----------------------------------------------------------------------------------
+| Main Page Style | Add CSS and classes for design purposes    |        2        |
+|                 |                                            |                 |    
+----------------------------------------------------------------------------------
+| Login Page Style| Add CSS and classes for design purposes    |        2        |
+|                 |                                            |                 |   
+----------------------------------------------------------------------------------
+| Admin Panel     | Create back end and front end for admin    |        2        |
+|                 | panel                                      |                 |
 ----------------------------------------------------------------------------------
 
-......
 
