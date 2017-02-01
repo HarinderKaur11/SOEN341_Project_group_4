@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:prod": "port=80 pm2 start app.js",
-    "stop:prod": "pm2 stop app"
+    "start:prod": "PORT=80 forever start -c nodemon app.js",
+    "stop:prod": "forever stop -c nodemon app.js"
   },
   "repository": {
     "type": "git",
