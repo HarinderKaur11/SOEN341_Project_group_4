@@ -2,17 +2,6 @@
 
 The structure for the frontend is the following:
 
-.
-+--templates
-+----template_name.html
-+----...
-+--app.js
-+--app.modules.js
-+--app.routes.js
-+--index.html
-+--package.json
-
-Where:
 * the templates folder is where we hold all our html views
 * app.js is where our front facing server's code meant for testing is stored
 * app.modules.js stores all the modules we support
