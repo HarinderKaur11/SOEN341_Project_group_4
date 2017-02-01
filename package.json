@@ -1,7 +1,7 @@
 {
   "name": "soen341backend",
   "version": "1.0.0",
-  "description": "Elearning project in soen 341 at concordia",
+  "description": "E-learning project for SOEN 341 at Concordia University",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
