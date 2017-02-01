@@ -33,7 +33,7 @@ module.exports = function(){
 	app.use('/images', express.static('images'));
 
 	// API routing rules will be included here
-	// Ex: require(appRoot + '/routes/authentication.routes.js')(router);
+	require(appRoot + '/routes/authentication.routes.js')(router);
 
 	app.use(router);
 
