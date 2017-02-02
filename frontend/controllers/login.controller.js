@@ -1,11 +1,8 @@
-(function () {
+(function (angular) {
+  angular.module('main').controller('loginCtrl', loginCtrl);
+  loginCtrl.$inject = ['$state', '$http'];
 
-  angular
-  .module('main')
-  .controller('loginCtrl', loginCtrl);
-
-  loginCtrl.$inject = ['$location', 'authentication'];
-  function loginCtrl($location, authentication) {
+  function loginCtrl($state, $http) {
     var vm = this;
 
     vm.credentials = {
@@ -14,16 +11,15 @@
     };
 
     vm.onSubmit = function () {
-      authentication
-        .login(vm.credentials)
-        .error(function(err){
-          alert(err);
-        })
-        .then(function(){
-          $location.path('profile');
-        });
+      $http({
+        method: 'POST',
+        url: '/login',
+        data: vm.credentials
+      }).then(function success(response) {
+        if (response.data.error === undefined) {
+          $state.go('main', {}, {});
+        }
+      });
     };
-
   }
-
-})();
+})(angular);
