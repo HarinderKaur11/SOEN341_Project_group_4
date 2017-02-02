@@ -1,6 +1,7 @@
 <DOCTYPE !html>
 <html>
 	<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="node_modules/angular/angular.js"></script>
 
 		<script src="node_modules/angular-loading-bar/src/loading-bar.js"></script>
@@ -11,10 +12,15 @@
 
     	<script src="app.module.js"></script>
     	<script src="app.routes.js"></script>
-          <meta name="viewport" content="width=device-width, initial-scale=1">
   
+        <link rel="stylesheet" href="./static/css/bootstrap.css" media="screen">
+        <link rel="stylesheet" href="./static/css/custom.min.css">
 	</head>
 	<body data-ng-app="main">
 		<div ui-view> </div>
-	</body>
+
+        <script src="./static/js/jquery-3.1.1.min.js"></script>
+        <script src="./static/js/bootstrap.min.js"></script>
+        <script src="./static/js/custom.js"></script>
+    </body>
 </html>

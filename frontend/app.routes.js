@@ -5,6 +5,11 @@
 			templateUrl: '/templates/test.html'
 		});
 
-		$urlRouterProvider.otherwise('/test');
+        $stateProvider.state('home', {
+            url: '/home',
+            templateUrl: '/templates/homepage.html'
+        });
+
+		$urlRouterProvider.otherwise('/home');
 	}]);
 })(angular);
