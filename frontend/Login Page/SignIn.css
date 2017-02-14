@@ -1,0 +1,38 @@
+*{
+   margin: 0px;
+   padding: 0px;
+}
+
+#container{
+    
+    
+    width: auto;
+    
+}
+
+header{
+    display: block;
+    background-color: cornflowerblue;
+    padding: 30px 0px;
+}
+header p{
+    font-size: 400%;
+}
+
+#form{
+    
+    display: block;
+    border: 1px solid black;
+    width: 33%;
+    padding: 175px 100px;
+    
+    margin: 5% 25%;
+    
+}
+#form p{
+   
+    text-align: left;
+    
+    font-size: 150%;
+}
+
