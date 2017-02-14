@@ -22,9 +22,9 @@ header p{
 #form{
     
     display: block;
-    border: 1px solid black;
+    border: 5px solid black;
     width: 33%;
-    padding: 175px 100px;
+    padding: 0px 150px 25% 0px;
     
     margin: 5% 25%;
     
@@ -32,6 +32,7 @@ header p{
 #form p{
    
     text-align: left;
+    
     
     font-size: 150%;
 }
