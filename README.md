@@ -1,3 +1,5 @@
+https://travis-ci.org/benrs/SOEN341_Project_group_4.svg?branch=master
+
 # E-Learning website for Software Engineering 341
 
 Site Url: http://ec2-54-91-234-134.compute-1.amazonaws.com/
