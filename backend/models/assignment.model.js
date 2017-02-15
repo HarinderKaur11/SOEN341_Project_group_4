@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var assignmentModel = new mongoose.Schema({
+var evaluationModel = new mongoose.Schema({
     id: Number,
     date: Number,
     courseID: Number,
@@ -8,6 +8,6 @@ var assignmentModel = new mongoose.Schema({
     weight: Number
 });
 
-Assignment = mongoose.model('assignment', assignmentModel);
+Evaluation = mongoose.model('evaluation', evaluationModel);
 
-module.exports = Assignment;
+module.exports = Evaluation;
