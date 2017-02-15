@@ -1,4 +1,4 @@
-https://travis-ci.org/benrs/SOEN341_Project_group_4.svg?branch=master
+[![Build Status](https://travis-ci.org/benrs/SOEN341_Project_group_4.svg?branch=master)](https://travis-ci.org/benrs/SOEN341_Project_group_4)
 
 # E-Learning website for Software Engineering 341
 
