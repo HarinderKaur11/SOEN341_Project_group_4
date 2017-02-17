@@ -9,6 +9,11 @@
             url: '/login',
             templateUrl: '/templates/login.template.html'
         });
+		
+	$stateProvider.state('register', {
+            url: '/register',
+            templateUrl: '/templates/register.template.html'
+        });
 
         $stateProvider.state('main', {
             url: '/main',
