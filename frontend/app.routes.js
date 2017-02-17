@@ -10,7 +10,7 @@
             templateUrl: '/templates/login.template.html'
         });
 		
-	$stateProvider.state('register', {
+	   $stateProvider.state('register', {
             url: '/register',
             templateUrl: '/templates/register.template.html'
         });
