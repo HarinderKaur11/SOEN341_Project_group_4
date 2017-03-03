@@ -1,6 +1,9 @@
-var express    = require('express');
-var session    = require('express-session');
-var bodyParser = require('body-parser');
+var express      = require('express');
+var session      = require('express-session');
+var bodyParser   = require('body-parser');
+var passportConf = require(appRoot + '/config/passport');
+
+const saltRounds = 10;
 
 var serverLogging = function(req, res, next){
 	console.log(req.method, req.url);
@@ -29,9 +32,11 @@ module.exports = function(){
 	app.use(bodyParser.json());
 	app.use(serverLogging);
 	app.use(express.static(appRoot + '/frontend'));
+	
+	let passport = passportConf(app);
 
 	// API routing rules will be included here
-	require(appRoot + '/backend/routes/authentication.routes.js')(router);
+	require(appRoot + '/backend/routes/authentication.routes.js')(router, passport);
 
 	app.use(router);
 
