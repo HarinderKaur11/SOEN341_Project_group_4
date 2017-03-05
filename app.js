@@ -8,7 +8,8 @@ mongoose.connection.on('error', function() {
     console.log('Failed to connect DB, make sure it is running.');
 });
 
-global.models = {};
+global.database         = mongoose.connection;
+global.models           = {};
 global.models.userModel = require(global.appRoot + '/backend/models/user.model.js');
 
 var express = require(appRoot + '/config/express');
