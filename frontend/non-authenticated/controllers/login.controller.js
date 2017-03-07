@@ -1,9 +1,10 @@
 (function (angular) {
   angular.module('main').controller('loginCtrl', loginCtrl);
-  loginCtrl.$inject = ['$state', '$http'];
+  loginCtrl.$inject = ['$http', '$location'];
 
-  function loginCtrl($state, $http) {
+  function loginCtrl($http, $location) {
     var vm = this;
+    vm.showError = false;
 
     vm.credentials = {
       username : "",
@@ -17,7 +18,13 @@
         data: vm.credentials
       }).then(function success(response) {
         if (response.data.error === undefined) {
-          $state.go('main', {}, {});
+          window.location = "/authenticated/";
+        } else {
+          vm.showError = true;
+        }
+      }).catch(function error(response) {
+        if (response.status !== 200) {
+          vm.showError = true;
         }
       });
     };

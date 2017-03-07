@@ -1,0 +1,20 @@
+<div style="margin:170px 0 0;" align="center">
+    <form data-ng-controller="registerCtrl as ctrl" data-ng-submit="ctrl.register()">
+      <div class="imgcontainer">
+        <img src="../static/img/main_logo.png" alt="Avatar" class="avatar" style="width: 300px;">
+      </div>
+    
+      <div align="left" class="container">
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" data-ng-model="ctrl.username">
+    
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" data-ng-model="ctrl.password_one">
+        
+        <label><b>Confirm Password</b></label>
+        <input type="password" placeholder="Enter Password Again" name="conf_psw" data-ng-model="ctrl.password_two">
+            
+        <button type="submit">Register</button>
+      </div>
+    </form>
+  </div>

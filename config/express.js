@@ -1,37 +1,49 @@
-var express    = require('express');
-var session    = require('express-session');
-var bodyParser = require('body-parser');
+var express      = require('express');
+var bodyParser   = require('body-parser');
+var passportConf = require(appRoot + '/config/passport');
 
 var serverLogging = function(req, res, next){
 	console.log(req.method, req.url);
 	next();
 };
 
+var authenticatedRedirect = function(req, res, next) {
+	if (req.isAuthenticated() && req.url === '/') {
+		res.redirect('/authenticated/');
+		res.end();
+	} else {
+		next();
+	}
+}
+
+var checkAuthentication = function(req, res, next) {
+	if (req.isAuthenticated()) {
+		next();
+	} else {
+		res.redirect('/');
+		res.end();
+	}
+}
+
 module.exports = function(){
 	var app    = express();
 	var router = express.Router();
 
-	var sess   = {
-		name: "ohIkgFh3KKxSS57",
-		secret: "soen341",
-		cookie: {
-			secure: false,
-			maxAge: 24 * 60 * 60 * 1000
-		},
-		resave: true,
-    	saveUninitialized: false
-	};
-
-	app.use(session(sess));
-
 	// Initializing some middleware
+
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
 	app.use(serverLogging);
-	app.use(express.static(appRoot + '/frontend'));
+	var passport = passportConf(app);
+	app.use(authenticatedRedirect);
+	app.use(express.static(appRoot + '/frontend/non-authenticated'));
 
-	// API routing rules will be included here
-	require(appRoot + '/backend/routes/authentication.routes.js')(router);
+	// Routing rules will be included here
+	require(appRoot + '/backend/routes/authentication.routes.js')(router, passport);
+
+	router.get('/authenticated*', checkAuthentication, function(req, res) {
+	    res.sendFile(appRoot + '/frontend' + req.url);
+	});
 
 	app.use(router);
 
