@@ -31,3 +31,7 @@ span.psw {
     float: right;
     padding-top: 16px;
 }
+
+.error-message {
+    color: red;
+}
