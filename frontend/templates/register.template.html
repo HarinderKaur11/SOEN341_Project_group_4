@@ -1,0 +1,46 @@
+<div style="margin:140px 0 0;" align="center">
+    <form action="#TODO" onsubmit="return myFunction()">
+      <div class="imgcontainer">
+        <img src="../static/img/main_logo.png" alt="Avatar" class="avatar" style="width: 300px;">
+      </div>
+    
+      <div align="left" class="container">
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+        
+        <label><b>Student ID</b></label>
+        <input id="sid" type="text" placeholder="Enter Student ID" name="sid" required>
+    
+        <label><b>Password</b></label>
+        <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+        
+        <label><b>Confirm Password</b></label>
+        <input id="conf_psw" type="password" placeholder="Enter Password Again" name="conf_psw" required> <span id='message'></span>
+            
+        <button type="submit">Register</button>
+      </div>
+    </form>
+  </div>
+  
+    
+  <script>
+    function myFunction() {
+    var pass1 = document.getElementById("psw").value;
+    var pass2 = document.getElementById("conf_psw").value;
+    var sid = document.getElementById("sid").value;
+    var numbers = /^[0-9]+$/;
+    
+    if (pass1 != pass2) {
+      document.getElementById("psw").style.borderColor = "#E34234";
+      document.getElementById("conf_psw").style.borderColor = "#E34234";
+      return false;
+    }
+    
+    if(!(sid.match(numbers))) {
+      document.getElementById("sid").style.borderColor = "#E34234";
+      return false;
+    }
+    
+    return true;
+    }
+  </script>
