@@ -15,11 +15,6 @@
             templateUrl: '/templates/register.template.html'
         });
 
-        $stateProvider.state('main', {
-            url: '/main',
-            template: '<h1>This is the main page</h1>'
-        });
-
 		$urlRouterProvider.otherwise('/home');
 	}]);
 })(angular);
