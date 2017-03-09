@@ -6,6 +6,8 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Filestack script -->
+<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
 
 
 <div class="navbar navbar-default navbar-fixed-top">
@@ -60,10 +62,20 @@
           <h3></h3>
         </div>
         <div class="col-sm-11">
-          <p>
-            <input type="filepicker" data-fp-apikey="AJ5agFb1BQxy24vHeY7Blz"
-onchange="alert(event.fpfile.url)">
-              </p>
+
+              <script>
+    var client = filestack.init('AJ5agFb1BQxy24vHeY7Blz');
+    function showPicker() {
+        client.pick({
+        }).then(function(result) {
+            console.log(JSON.stringify(result.filesUploaded))
+        });
+    }
+</script>
+<input type="button" value="Upload" onclick="showPicker()" />
+          
+
+             
         </div>
       </div>
 
