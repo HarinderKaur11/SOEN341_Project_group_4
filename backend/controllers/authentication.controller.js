@@ -45,7 +45,7 @@ exports.register = function(req, res, next) {
             }
         });
     } else {
-        response.error = "Invalid request paramters.";
+        response.error = "Invalid request parameters.";
         res.json(response);
     }
 }
