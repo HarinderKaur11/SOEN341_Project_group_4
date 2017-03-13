@@ -14,6 +14,11 @@
             url: '/register',
             templateUrl: '/templates/register.template.html'
         });
+		
+		 $stateProvider.state('calendar', {
+            url: '/calendar',
+            templateUrl: '/templates/calendar.html'
+        });
 
 		$urlRouterProvider.otherwise('/home');
 	}]);
