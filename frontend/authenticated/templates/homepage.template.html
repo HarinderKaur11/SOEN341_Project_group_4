@@ -46,7 +46,9 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a ui-sref="login">Login</a></li>
+            <li>
+                <a data-ng-controller="logoutCtrl as ctrl" data-ng-click="ctrl.onSubmit()">Logout</a>
+            </li>
           </ul>
 
         </div>

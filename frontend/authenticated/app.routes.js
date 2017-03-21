@@ -7,7 +7,7 @@
 
         $stateProvider.state('login', {
             url: '/login',
-            templateUrl: '/templates/login.template.html'
+            templateUrl: './non-authenticated/templates/login.template.html'
         });
 		
 	   $stateProvider.state('register', {
@@ -20,6 +20,6 @@
             templateUrl: '/templates/calendar.html'
         });
 
-		$urlRouterProvider.otherwise('/login');
+		$urlRouterProvider.otherwise('/home');
 	}]);
 })(angular);

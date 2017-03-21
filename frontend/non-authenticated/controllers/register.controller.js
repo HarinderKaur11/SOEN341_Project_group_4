@@ -33,6 +33,7 @@
                     if (response.data.error === undefined) {
                         window.location = "/authenticated/";
                     } else {
+                        console.log(response.data.error);
                         vm.submitted = true;
                     }
                 }).catch(function error(response) {

@@ -10,7 +10,7 @@ exports.login = function(req, res, next) {
 
 exports.logout = function(req, res, next) {
     req.logout();
-    res.redirect('/');  
+    res.redirect('/');
 };
 
 exports.register = function(req, res, next) {
@@ -34,12 +34,15 @@ exports.register = function(req, res, next) {
 
                     user.save(function(err, user) {
                         if (!err) {
-                            response.success = "Successfully created the user.";
-                            res.json(response);
-                        } else {
-                            response.error = "Invalid request.";
-                            res.json(response);
-                        }
+                          response.success = "Successfully created the user.";
+                          req.login(user, function(err) {
+                              if (err) { res.json(response); }
+                              res.json(response);
+                         });
+                      } else {
+                          response.error = "Invalid request.";
+                          res.json(response);
+                      }
                     });
                 }
             }
