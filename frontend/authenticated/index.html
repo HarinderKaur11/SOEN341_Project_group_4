@@ -1,8 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
-    <body>
-        <h1>You need to be authenticated to get this</h1>
+	<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="node_modules/angular-loading-bar/src/loading-bar.css" />
+        <link rel="stylesheet" href="./static/css/bootstrap.css">
+        <link rel="stylesheet" href="./static/css/custom.min.css">
+        <link rel="stylesheet" href="./static/css/loginstyle.css">
+	</head>
+	<body data-ng-cloak data-ng-app="main">
+		<div ui-view> </div>
+
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-loading-bar/src/loading-bar.js"></script>
+        <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="app.module.js"></script>
+        <script src="app.routes.js"></script>
+        <script src="./static/js/jquery-3.1.1.min.js"></script>
+        <script src="./static/js/bootstrap.min.js"></script>
+        <script src="./static/js/custom.js"></script>
+        <script src="./controllers/logout.controller.js"></script>
+        <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+<script>
+    var client = filestack.init('AJ5agFb1BQxy24vHeY7Blz');
+    function showPicker() {
+        client.pick({
+        }).then(function(result) {
+            console.log(JSON.stringify(result.filesUploaded))
+        });
+    }
+</script>
+<input type="button" value="Upload" onclick="showPicker()" />
+          
     </body>
 </html>
