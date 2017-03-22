@@ -15,7 +15,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
+
 	</head>
 	<body data-ng-cloak data-ng-app="main">
 
@@ -46,6 +46,9 @@
               <a href="#">Calendar</a>
             </li>
             <li>
+              <a ui-sref="fileup">File Upload</a>
+            </li>
+            <li>
               <a href="#">Chatroom</a>
             </li>
             <li>
@@ -67,6 +70,7 @@
     </div>
 
 
+
 		<div ui-view> </div>
 
         <script src="node_modules/angular/angular.js"></script>
@@ -79,6 +83,7 @@
         <script src="./static/js/custom.js"></script>
         <script src="./controllers/logout.controller.js"></script>
         <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+        <script src="./static/js/filepicker.js"></script>
 
           
     </body>

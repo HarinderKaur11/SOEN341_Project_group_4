@@ -20,5 +20,13 @@
                 }
             });
         };
+
     }
+
+    $scope.fileup = function () {
+            $state.go('fileup', {});
+        };
+
+    
+
 })(angular);
