@@ -45,7 +45,18 @@ module.exports = function(){
 	    res.sendFile(appRoot + '/frontend' + req.url);
 	});
 
+	// Chat API
+	var SECRET= "58c4185b-ef62-4968-aea4-9748578cb35e";
+	var jwt= require("jsonwebtoken");
+	app.post("/tokens", function(req, res) {
+	    res.end(jwt.sign({ device: req.body.device }, SECRET, { expiresIn: 86400 }));
+	});
+
+	var httpServer= require("http").createServer(app);
+	httpServer.listen(3001, function() { console.log("START TOKEN GENERATOR"); });
+
 	app.use(router);
 
 	return app;
 };
+
