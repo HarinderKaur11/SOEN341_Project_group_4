@@ -14,6 +14,11 @@
             url: '/fileup',
             templateUrl: '/authenticated/templates/fileup.template.html'
         });
+
+        $stateProvider.state('chat', {
+            url: '/chat',
+            templateUrl: '/authenticated/templates/chat.template.html'
+        });
 		
 	   $stateProvider.state('register', {
             url: '/register',
