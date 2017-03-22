@@ -9,6 +9,11 @@
             url: '/login',
             templateUrl: './non-authenticated/templates/login.template.html'
         });
+
+        $stateProvider.state('fileup', {
+            url: '/fileup',
+            templateUrl: '/authenticated/templates/fileup.template.html'
+        });
 		
 	   $stateProvider.state('register', {
             url: '/register',
