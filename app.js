@@ -15,7 +15,9 @@ global.models.userModel = require(global.appRoot + '/backend/models/user.model.j
 var express = require(appRoot + '/config/express');
 var app     = express();
 
-app.listen(process.env.PORT || config.port, function() {
+var server = app.listen(process.env.PORT || config.port, function() {
     var port = process.env.PORT || config.port;
     console.log('Listening on port: ' + port);
 });
+
+module.exports = server;
