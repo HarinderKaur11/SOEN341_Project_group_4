@@ -1,7 +1,7 @@
 var passport   = require('passport');
 var localStrat = require('passport-local').Strategy;
 var bcrypt     = require('bcrypt');
-var session     = require('express-session');
+var session    = require('express-session');
 
 module.exports = function(app) {
     var sess   = {
