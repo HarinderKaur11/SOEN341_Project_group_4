@@ -14,8 +14,12 @@
             url: '/fileup',
             templateUrl: '/authenticated/templates/fileup.template.html'
         });
+        $stateProvider.state('courses', {
+            url: '/courses',
+            templateUrl: '/authenticated/templates/courses.template.html'
+        });
 		
-	   $stateProvider.state('register', {
+	    $stateProvider.state('register', {
             url: '/register',
             templateUrl: '/templates/register.template.html'
         });
