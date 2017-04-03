@@ -1,7 +1,10 @@
 var request = require('supertest');
+var uuid    = require('uuid/v4');
 
-describe('loading express', function() {
+describe('Testing all routes', function() {
     var server;
+    var username;
+    var password;
 
     before(function() {
         server = require('../../app');
@@ -21,5 +24,33 @@ describe('loading express', function() {
         request(server)
             .get('/foo/bar')
             .expect(404, done);
+    });
+
+    it('has working register functionality', function(done) {
+        username = uuid();
+        password = uuid();
+        request(server)
+            .post('/register', {
+                username: username,
+                password: password
+            })
+            .expect(200, done);
+    });
+
+    it('has working login functionality', function(done) {
+        request(server)
+            .post('/login', {
+                username: username,
+                password: password
+            })
+            .expect(200, done);
+    });
+
+    it('has working logout functionality', function(done) {
+        request(server)
+            .post('/logout', {
+                
+            })
+            .expect(200, done);
     });
 });
