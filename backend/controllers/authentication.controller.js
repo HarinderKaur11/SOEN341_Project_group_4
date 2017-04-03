@@ -34,11 +34,11 @@ exports.register = function(req, res, next) {
 
                     user.save(function(err, user) {
                         if (!err) {
-                          response.success = "Successfully created the user.";
-                          req.login(user, function(err) {
-                              if (err) { res.json(response); }
-                              res.json(response);
-                         });
+                            response.success = "Successfully created the user.";
+                            req.login(user, function(err) {
+                                if (err) { res.json(response); }
+                                res.json(response);
+                            });
                       } else {
                           response.error = "Invalid request.";
                           res.json(response);

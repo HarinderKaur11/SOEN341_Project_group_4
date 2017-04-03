@@ -1,7 +1,7 @@
 var request = require('supertest');
 var uuid    = require('uuid/v4');
 
-describe('Testing all routes', function() {
+describe('Testing routes, we', function() {
     var server;
     var username;
     var password;
@@ -14,19 +14,19 @@ describe('Testing all routes', function() {
         server.close(done);
     });
   
-    it('responds to /', function testSlash(done) {
+    it('respond to /', function(done) {
         request(server)
             .get('/')
             .expect(200, done);
     });
   
-    it('404 when going to non-existant path', function testPath(done) {
+    it('redirect to a 404 when going to non-existant path', function(done) {
         request(server)
             .get('/foo/bar')
             .expect(404, done);
     });
 
-    it('has working register functionality', function(done) {
+    it('have working register functionality', function(done) {
         username = uuid();
         password = uuid();
         request(server)
@@ -37,7 +37,7 @@ describe('Testing all routes', function() {
             .expect(200, done);
     });
 
-    it('has working login functionality', function(done) {
+    it('have working login functionality', function(done) {
         request(server)
             .post('/login', {
                 username: username,
@@ -46,11 +46,9 @@ describe('Testing all routes', function() {
             .expect(200, done);
     });
 
-    it('has working logout functionality', function(done) {
+    it('have working logout functionality', function(done) {
         request(server)
-            .post('/logout', {
-                
-            })
-            .expect(200, done);
+            .get('/logout')
+            .expect(302, done);
     });
 });
