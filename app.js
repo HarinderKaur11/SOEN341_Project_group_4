@@ -3,7 +3,7 @@ global.appRoot = path.resolve(__dirname);
 
 var config  = require(appRoot + '/config/server_config');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:' + config.db_port + '/elearning-website');
+mongoose.connect('mongodb://localhost:' + (process.env.DB_PORT || config.db_port) + '/elearning-website');
 mongoose.connection.on('error', function() {
     console.log('Failed to connect DB, make sure it is running.');
 });

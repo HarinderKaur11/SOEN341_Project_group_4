@@ -1,7 +1,7 @@
 {
   "name": "soen341backend",
   "version": "1.0.0",
-  "description": "E-learning project for SOEN 341 at Concordia University",
+  "description": "E-learning project for SOEN 341 at Concordia University, this package json relates to what is needed to run the backend of the application.",
   "main": "app.js",
   "scripts": {
     "test": "mocha ./backend/test/spec.js",
