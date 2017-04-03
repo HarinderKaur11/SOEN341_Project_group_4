@@ -20,7 +20,7 @@ var checkAuthentication = function(req, res, next) {
 	if (req.isAuthenticated()) {
 		next();
 	} else {
-		res.redirect('/non-authenticated');
+		res.redirect('/');
 		res.end();
 	}
 }

@@ -3,7 +3,7 @@ var authenticationController = require(appRoot + "/backend/controllers/authentic
 module.exports = function(router, passport) {
     router.post("/login", passport.authenticate('local'), authenticationController.login);
     
-    router.post("/logout", authenticationController.logout);
+    router.get("/logout", authenticationController.logout);
 
     router.post("/register", authenticationController.register);
 };

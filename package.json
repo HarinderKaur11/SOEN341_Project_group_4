@@ -1,10 +1,11 @@
 {
   "name": "soen341backend",
   "version": "1.0.0",
-  "description": "E-learning project for SOEN 341 at Concordia University",
+  "description": "E-learning project for SOEN 341 at Concordia University, this package json relates to what is needed to run the backend of the application.",
   "main": "app.js",
   "scripts": {
     "test": "mocha ./backend/test/spec.js",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha ./backend/test/spec.js",
     "start:prod": "PORT=80 forever start -c nodemon app.js",
     "stop:prod": "forever stop -c nodemon app.js"
   },
@@ -23,6 +24,7 @@
     "body-parser": "^1.16.0",
     "express": "^4.14.1",
     "express-session": "^1.15.0",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "mongodb": "^2.2.22",
     "mongoose": "^4.8.1",
