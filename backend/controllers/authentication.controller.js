@@ -20,11 +20,11 @@ exports.register = function(req, res, next) {
         models.userModel.findOne({ username: req.body.username }, function(err, user) {
             if (err) {
                 response.error = "Invalid request.";
-                res.json(response);
+                res.status(400).json(response);
             } else {
                 if (user) {
                     response.error = "Username already taken.";
-                    res.json(response);
+                    res.status(400).json(response);
                 } else {
                     var user = new models.userModel({
                         username: req.body.username, 
@@ -34,21 +34,24 @@ exports.register = function(req, res, next) {
 
                     user.save(function(err, user) {
                         if (!err) {
-                            response.success = "Successfully created the user.";
                             req.login(user, function(err) {
-                                if (err) { res.json(response); }
+                                if (err) { 
+                                    response.error = "Could not login after creating user.";
+                                    res.status(400).json(response); 
+                                }
+                                response.success = "Successfully created the user.";
                                 res.json(response);
                             });
-                      } else {
-                          response.error = "Invalid request.";
-                          res.json(response);
-                      }
+                        } else {
+                          response.error = "Could not save user, try again.";
+                          res.status(400).json(response);
+                        }
                     });
                 }
             }
         });
     } else {
         response.error = "Invalid request parameters.";
-        res.json(response);
+        res.status(400).json(response);
     }
 }
