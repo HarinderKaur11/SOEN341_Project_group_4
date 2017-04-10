@@ -54,4 +54,4 @@ exports.register = function(req, res, next) {
         response.error = "Invalid request parameters.";
         res.status(400).json(response);
     }
-}
+};

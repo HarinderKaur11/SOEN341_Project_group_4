@@ -39,7 +39,9 @@ module.exports = function(){
 	app.use(express.static(appRoot + '/frontend/non-authenticated'));
 
 	// Routing rules will be included here
+	require(appRoot + '/backend/routes/admin.routes.js')(router, checkAuthentication);
 	require(appRoot + '/backend/routes/authentication.routes.js')(router, passport);
+	require(appRoot + '/backend/routes/courses.routes.js')(router, checkAuthentication);
 
 	router.get('/authenticated*', checkAuthentication, function(req, res) {
 	    res.sendFile(appRoot + '/frontend' + req.url);
