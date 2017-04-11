@@ -1,13 +1,11 @@
-var uuid = require('uuid/v4');
-
 exports.createCourse = function(req, res, next) {
     var response = {};
 
     if (req.body.name && req.body.shortName && req.user.type == "teacher") {
         var course = new models.courseModel({
             teacher: req.user._id,
-            name: req.body.username, 
-            shortName: bcrypt.hashSync(req.body.password, saltR),
+            name: req.body.name, 
+            shortName: req.body.shortName,
             students: []
         });
 
@@ -16,8 +14,35 @@ exports.createCourse = function(req, res, next) {
                 response.error = "Could not create the course.";
                 res.status(400).json(response);
             } else {
-                response.success = "Successfully created the course.";
-                res.json(response);
+                models.userModel.findOne({ username: req.user.username })
+                                .populate({
+                                    path: 'courses',
+                                    populate: {
+                                        path: 'teacher',
+                                        model: 'user'
+                                    }
+                                })
+                                .exec(function(err, user) {
+                    if (err) {
+                        response.error = "Could not fetch information.";
+                        res.status(400).json(response);
+                    } else if (user) {
+                        user.courses.push(course);
+                        user.save(function(err) {
+                            if (err) {
+                                response.error = "Could not update information.";
+                                res.status(400).json(response);
+                            } else {
+                                response.courses = user.courses;
+                                response.success = "Successfully created the course.";
+                                res.json(response);
+                            }
+                        })
+                    } else {
+                        response.error = "Currently signed in user does not exist.";
+                        res.status(400).json(response);
+                    }
+                });
             }
         });
     } else {
@@ -30,12 +55,21 @@ exports.deleteCourse = function(req, res, next) {
     var response = {};
 
     if (req.body.courseId && req.user.type == "teacher") {
-        course.findOne({ _id: req.body.courseId }).populate('teacher').exec(function(err, course) {
+        // Find the course we want to delete
+        course.findOne({ _id: req.body.courseId }).populate('teacher').populate('students').exec(function(err, course) {
             if (err) {
                 response.error = "Could not fetch information.";
                 res.status(400).json(response);
             } else if (course) {
                 if (course.teacher._id == req.user._id) {
+                    // Remove the course from all the students
+                    for(var studenIndex in course.students) {
+                        var currStudent = course.students[studenIndex];
+
+                        currStudent.courses.splice(currStudent.courses.indexOf(course._id), 1);
+                        currStudent.save();
+                    }
+
                     models.courseModel.deleteOne({ _id: req.body.courseId });
                     response.success = "Successfully deleted the course.";
                     res.json(response);
@@ -68,9 +102,11 @@ exports.joinCourse = function(req, res, next) {
                         response.error = "Could not fetch information.";
                         res.status(400).json(response);
                     } else if (user) {
-                        var newCourses = courses;
+                        var newCourses = user.courses;
                         newCourses.append(course._id);
                         models.userModel.update({ username: req.user.username }, { courses: newCourses });
+                        response.success = "Successfully joined the course.";
+                        res.json(response);
                     } else {
                         response.error = "Currently signed in user does not exist.";
                         res.status(400).json(response);

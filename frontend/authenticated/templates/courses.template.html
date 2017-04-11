@@ -1,4 +1,30 @@
 <div data-ng-controller="coursesCtrl as ctrl" class="row">
-    <div class="col-lg-10 col-lg-push-1">
+    <div class="col-lg-10 col-lg-push-1" data-ng-if="!ctrl.loading">
+        <div class="row">
+            <div data-ng-if="ctrl.userType == 'student'">
+                <button class="btn btn-primary">Show All Courses</button>
+            </div>
+            <div data-ng-if="ctrl.userType == 'teacher'">
+                <button class="btn btn-primary" data-ng-if="!ctrl.showCourseCreator" data-ng-click="ctrl.enableCourseCreator()">Show Course Creator</button>
+                <div data-ng-if="ctrl.showCourseCreator">
+                    <label>Course Name</label>
+                    <input type="input" data-ng-model="ctrl.courseName" />
+                    <label>Course Short Name</label>
+                    <input type="input" data-ng-model="ctrl.courseShortName" />
+                    <button class="btn btn-primary" data-ng-click="ctrl.createCourse()">Create Course</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3>My Courses</h3>
+            <div data-ng-repeat="course in ctrl.myCourses">
+                <div>{{ course.shortName }}</div>
+                <div>{{ course.name }}</div>
+                <div>{{ course.teacher.name }}</div>
+            </div>
+            <div data-ng-hide="ctrl.myCourses.length">
+                You have no courses
+            </div>
+        </div>
     </div>
 </div>

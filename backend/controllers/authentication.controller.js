@@ -16,7 +16,7 @@ exports.logout = function(req, res, next) {
 exports.register = function(req, res, next) {
     var response = {};
 
-    if (req.body.username && req.body.password) {
+    if (req.body.name && req.body.username && req.body.password) {
         models.userModel.findOne({ username: req.body.username }, function(err, user) {
             if (err) {
                 response.error = "Invalid request.";
@@ -27,6 +27,7 @@ exports.register = function(req, res, next) {
                     res.status(400).json(response);
                 } else {
                     var user = new models.userModel({
+                        name: req.body.name,
                         username: req.body.username, 
                         password: bcrypt.hashSync(req.body.password, saltR),
                         type: 'student',

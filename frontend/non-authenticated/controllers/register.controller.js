@@ -5,6 +5,7 @@
     function registerCtrl($http) {
         var vm = this;
 
+        vm.name = '';
         vm.username = '';
         vm.password_one = '';
         vm.password_two = '';
@@ -26,6 +27,7 @@
                     method: 'POST',
                     url: '/api/register',
                     data: {
+                        name: vm.name,
                         username: vm.username,
                         password: vm.password_one
                     }
