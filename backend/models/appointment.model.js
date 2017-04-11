@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
+var Schema   = mongoose.Schema;
 
-var appointmentModel = new mongoose.Schema({
-    id: Number,
+var appointmentModel = Schema({
     date: Number,
     location: String,
     teacherID: Number,

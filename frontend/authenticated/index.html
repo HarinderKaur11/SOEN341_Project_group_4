@@ -7,16 +7,14 @@
         <link rel="stylesheet" href="./static/css/custom.min.css">
         <link rel="stylesheet" href="./static/css/loginstyle.css">
 		<link rel="stylesheet" href="./static/css/course-home.css">
+        <link rel="stylesheet" href="./static/css/jquery.e-calendar.css"/>
+        <link rel="stylesheet" href="http://www.jqueryscript.net/css/jquerysctipttop.css">
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 	</head>
 	<body data-ng-cloak data-ng-app="main">
         <div class="navbar navbar-default navbar-fixed-top">
@@ -32,12 +30,12 @@
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav">
                         <li>
-              				<a ui-sref="courses">Courses</a>
-           	 			</li>
+                            <a ui-sref="courses">Courses</a>
+                        </li>
                         <li>
                             <a ui-sref="fileup">File Upload</a>
                         </li>
-			    <li>
+                        <li>
                             <a ui-sref="calendar">Calendar</a>
                         </li>    
                         <li>
@@ -62,16 +60,19 @@
 
 		<div ui-view></div>
 
+        <script src="./static/js/jquery-3.1.1.min.js"></script>
         <script src="node_modules/angular/angular.js"></script>
         <script src="node_modules/angular-loading-bar/src/loading-bar.js"></script>
         <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="app.module.js"></script>
         <script src="app.routes.js"></script>
-        <script src="./static/js/jquery-3.1.1.min.js"></script>
         <script src="./static/js/bootstrap.min.js"></script>
         <script src="./static/js/custom.js"></script>
+        <script src="./controllers/courses.controller.js"></script>
         <script src="./controllers/logout.controller.js"></script>
-        <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+        <script src="https://static.filestackapi.com/v3/filestack.js"></script>
         <script src="./static/js/filepicker.js"></script>
+        <script src="./static/js/jquery.e-calendar.js"></script>
+        <script src="./static/js/calendarevents.js"></script>
     </body>
 </html>

@@ -29,6 +29,6 @@
             templateUrl: '/authenticated/templates/calendar.template.html'
         });
 
-		$urlRouterProvider.otherwise('/home');
+		$urlRouterProvider.otherwise('/courses');
 	}]);
 })(angular);

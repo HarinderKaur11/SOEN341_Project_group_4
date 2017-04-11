@@ -5,6 +5,8 @@ module.exports = function(router, passport) {
     
     router.get("/logout", authenticationController.logout);
 
-    router.post("/register", authenticationController.register);
+    router.post("/api/register", authenticationController.register);
+
+    router.get("/api/getAccountType", authenticationController.getAccountType);
 };
 

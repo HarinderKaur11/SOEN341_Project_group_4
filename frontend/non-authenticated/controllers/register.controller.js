@@ -24,7 +24,7 @@
             if (!vm.password_two_error && !vm.errorMessage) {
                 $http({
                     method: 'POST',
-                    url: '/register',
+                    url: '/api/register',
                     data: {
                         username: vm.username,
                         password: vm.password_one

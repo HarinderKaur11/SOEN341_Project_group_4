@@ -29,7 +29,8 @@ exports.register = function(req, res, next) {
                     var user = new models.userModel({
                         username: req.body.username, 
                         password: bcrypt.hashSync(req.body.password, saltR),
-                        type: 'student'
+                        type: 'student',
+                        courses: []
                     });
 
                     user.save(function(err, user) {
@@ -52,6 +53,18 @@ exports.register = function(req, res, next) {
         });
     } else {
         response.error = "Invalid request parameters.";
+        res.status(400).json(response);
+    }
+};
+
+exports.getAccountType = function(req, res, next) {
+    var response = {};
+
+    if (req.user) {
+        response.type = req.user.type;
+        res.json(response);
+    } else {
+        response.error = "You are not signed in.";
         res.status(400).json(response);
     }
 };
