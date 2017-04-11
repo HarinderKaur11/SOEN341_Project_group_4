@@ -19,6 +19,11 @@
             templateUrl: '/authenticated/templates/courses.template.html'
         });
 		
+        $stateProvider.state('grades', {
+            url: '/grades',
+            templateUrl: '/authenticated/templates/grades.template.html'
+        });
+		
 	    $stateProvider.state('register', {
             url: '/register',
             templateUrl: '/templates/register.template.html'
