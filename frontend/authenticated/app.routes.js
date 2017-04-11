@@ -26,7 +26,7 @@
 		
 		 $stateProvider.state('calendar', {
             url: '/calendar',
-            templateUrl: '/templates/calendar.html'
+            templateUrl: '/authenticated/templates/calendar.template.html'
         });
 
 		$urlRouterProvider.otherwise('/home');
