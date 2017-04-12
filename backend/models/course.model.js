@@ -1,12 +1,12 @@
+'use strict';
 var mongoose = require('mongoose');
+var Schema   = mongoose.Schema;
 
-var courseModel = new mongoose.Schema({
-  courseId: Number,
-  teacher = id,
-  name = String,
-  uniqueId = String,
-  //students
+var courseModel = new Schema({
+    teacher: { type: Schema.Types.ObjectId, ref: 'user' },
+    name: String,
+    shortName: String,
+    students: [{ type: Schema.Types.ObjectId, ref: 'user' }]
+});
 
-  });
-  
-  module.exports = mongoose.model('course', courseModel);
+module.exports = mongoose.model('course', courseModel);

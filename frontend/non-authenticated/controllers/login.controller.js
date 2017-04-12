@@ -18,7 +18,7 @@
             if (vm.credentials.username && vm.credentials.password) {
                 $http({
                     method: 'POST',
-                    url: '/login',
+                    url: '/api/login',
                     data: vm.credentials
                 }).then(function success(response) {
                     if (response.data.error === undefined) {

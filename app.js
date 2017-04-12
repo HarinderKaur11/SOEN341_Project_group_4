@@ -11,6 +11,7 @@ mongoose.connection.on('error', function() {
 global.database         = mongoose.connection;
 global.models           = {};
 global.models.userModel = require(global.appRoot + '/backend/models/user.model.js');
+global.models.courseModel = require(global.appRoot + '/backend/models/course.model.js');
 
 var express = require(appRoot + '/config/express');
 var app     = express();

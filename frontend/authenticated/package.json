@@ -20,6 +20,7 @@
     "angular": "^1.6.1",
     "angular-loading-bar": "^0.9.0",
     "angular-ui-router": "^0.4.2",
-    "filestack-js": "^0.3.2"
+    "filestack-js": "^0.3.2",
+    "jslint": "^0.10.3"
   }
 }

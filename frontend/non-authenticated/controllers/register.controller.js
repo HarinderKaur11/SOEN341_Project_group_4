@@ -5,6 +5,7 @@
     function registerCtrl($http) {
         var vm = this;
 
+        vm.name = '';
         vm.username = '';
         vm.password_one = '';
         vm.password_two = '';
@@ -24,8 +25,9 @@
             if (!vm.password_two_error && !vm.errorMessage) {
                 $http({
                     method: 'POST',
-                    url: '/register',
+                    url: '/api/register',
                     data: {
+                        name: vm.name,
                         username: vm.username,
                         password: vm.password_one
                     }

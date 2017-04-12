@@ -8,7 +8,7 @@
 
         vm.onSubmit = function () {
             vm.errorMessage = "";
-            window.location = "/logout";
+            window.location = "/api/logout";
         };
 
     }
