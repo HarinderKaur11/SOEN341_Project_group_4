@@ -18,7 +18,7 @@
                 vm.password_two_error = "Passwords must match.";
             }
             
-            if (!vm.username || !vm.password_one || !vm.password_two ){
+            if (!vm.username || !vm.password_one || !vm.password_two || !vm.name){
                 vm.errorMessage = "All fields are required.";
             }
             
@@ -40,7 +40,7 @@
                     }
                 }).catch(function error(response) {
                     if (response.status !== 200) {
-                        vm.showError = true;
+                        vm.errorMessage = response.data.error;
                     }
                 });
             }
