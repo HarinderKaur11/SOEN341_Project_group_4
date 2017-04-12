@@ -1,15 +1,15 @@
 var courseController = require(appRoot + "/backend/controllers/course.controller.js");
 
 module.exports = function(router, checkAuthentication) {
-    router.post('/api/createCourse', courseController.createCourse);
+    router.post('/api/createCourse', checkAuthentication, courseController.createCourse);
 
-    router.delete('/api/deleteCourse/:id', courseController.deleteCourse);
+    router.post('/api/deleteCourse', checkAuthentication, courseController.deleteCourse);
 
-    router.post('/api/joinCourse', courseController.joinCourse);
+    router.post('/api/joinCourse', checkAuthentication, courseController.joinCourse);
 
-    router.post('/api/leaveCourse', courseController.leaveCourse);
+    router.post('/api/leaveCourse', checkAuthentication, courseController.leaveCourse);
 
-    router.get('/api/getAllCourses', courseController.getAllCourses);
+    router.get('/api/getAllCourses', checkAuthentication, courseController.getAllCourses);
 
-    router.get('/api/getMyCourses', courseController.getMyCourses);
+    router.get('/api/getMyCourses', checkAuthentication, courseController.getMyCourses);
 };

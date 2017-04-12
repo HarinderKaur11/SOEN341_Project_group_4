@@ -2,7 +2,26 @@
     <div class="col-lg-10 col-lg-push-1" data-ng-if="!ctrl.loading">
         <div class="row">
             <div data-ng-if="ctrl.userType == 'student'">
-                <button class="btn btn-primary">Show All Courses</button>
+                <button class="btn btn-primary" data-ng-if="!ctrl.showCourseRegistration" data-ng-click="ctrl.enableCourseRegistration()">Register To Classes</button>
+                <div data-ng-if="ctrl.showCourseRegistration" class="courseRegistration">
+                    <h3 class="title">Course Registration</h3>
+                    <button class="btn btn-primary" data-ng-click="ctrl.disableCourseRegistration()">Stop Registration</button>
+                    <div data-ng-repeat="course in ctrl.courses" class="course">
+                        <div class="add" data-ng-if="!ctrl.registered(course._id)">
+                            <a data-ng-click="ctrl.joinCourse(course._id)">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="shortName">{{ course.shortName }}</div>
+                        <div class="pipe">|</div>
+                        <div class="name">{{ course.name }}</div>
+                        <div class="teacherName">Teacher: {{ course.teacher.name }}</div>
+                        <div class="numberOfStudents">Students Attending: {{ course.students.length }}</div>
+                    </div>
+                    <div data-ng-hide="ctrl.courses.length">
+                        There are no courses, come back later.
+                    </div>
+                </div>
             </div>
             <div data-ng-if="ctrl.userType == 'teacher'">
                 <button class="btn btn-primary" data-ng-if="!ctrl.showCourseCreator" data-ng-click="ctrl.enableCourseCreator()">Show Course Creator</button>
@@ -12,15 +31,33 @@
                     <label>Course Short Name</label>
                     <input type="input" data-ng-model="ctrl.courseShortName" />
                     <button class="btn btn-primary" data-ng-click="ctrl.createCourse()">Create Course</button>
+                    <button class="btn btn-primary" data-ng-click="ctrl.disableCourseCreator()">Hide Creator</button>
                 </div>
             </div>
         </div>
         <div class="row">
             <h3>My Courses</h3>
-            <div data-ng-repeat="course in ctrl.myCourses">
-                <div>{{ course.shortName }}</div>
-                <div>{{ course.name }}</div>
-                <div>{{ course.teacher.name }}</div>
+            <div data-ng-repeat="course in ctrl.myCourses" class="course">
+                <div class="remove">
+                    <a data-ng-click="ctrl.removeCourse(course._id)">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+                <div class="shortName">{{ course.shortName }}</div>
+                <div class="pipe">|</div>
+                <div class="name">{{ course.name }}</div>
+                <div class="teacherName">Teacher: {{ course.teacher.name }}</div>
+                <div data-ng-if="ctrl.userType == 'teacher'">
+                    <div class="students" data-ng-if="ctrl.students.length">
+                        <h4>Students</h4>
+                        <div class="studentContainer" data-ng-repeat="student in course.students">
+                            <div>{{ student.name }}</div>
+                        </div>
+                    </div>
+                    <div class="students" data-ng-if="!ctrl.students.length">
+                        There are no students taking this course
+                    </div>
+                </div>
             </div>
             <div data-ng-hide="ctrl.myCourses.length">
                 You have no courses

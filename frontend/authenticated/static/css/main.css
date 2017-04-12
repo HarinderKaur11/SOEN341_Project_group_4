@@ -16,3 +16,67 @@ a:hover {
     margin-left: 0px;
     margin-right: 0px;
 }
+
+.course {
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 25px;
+    margin-top: 5px;
+}
+
+.course .remove {
+    display: inline-block;
+    float: right;
+}
+
+.course .add {
+    display: inline-block;
+    float: right;
+}
+
+.course .remove a {
+    color: black;
+}
+
+.course .add a {
+    color: black;
+}
+
+.course .shortName {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.course .pipe {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.course .name {
+    display: inline-block;
+}
+
+.course .teacherName {
+    margin-top: 10px;
+}
+
+.students {
+    margin-top: 5px;
+}
+
+.courseRegistration {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.courseRegistration .title {
+    display: inline-block;
+}
+
+.courseRegistration button {
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
