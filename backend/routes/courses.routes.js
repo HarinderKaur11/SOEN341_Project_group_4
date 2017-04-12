@@ -1,6 +1,7 @@
-var courseController = require(appRoot + "/backend/controllers/course.controller.js");
+'use strict';
+var courseController = require(global.appRoot + "/backend/controllers/course.controller.js");
 
-module.exports = function(router, checkAuthentication) {
+module.exports = function (router, checkAuthentication) {
     router.post('/api/createCourse', checkAuthentication, courseController.createCourse);
 
     router.post('/api/deleteCourse', checkAuthentication, courseController.deleteCourse);

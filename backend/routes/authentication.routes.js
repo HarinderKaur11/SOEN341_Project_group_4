@@ -1,9 +1,10 @@
-var authenticationController = require(appRoot + "/backend/controllers/authentication.controller.js");
+'use strict';
+var authenticationController = require(global.appRoot + "/backend/controllers/authentication.controller.js");
 
-module.exports = function(router, passport, checkAuthentication) {
-    router.post("/login", passport.authenticate('local'), authenticationController.login);
-    
-    router.get("/logout", authenticationController.logout);
+module.exports = function (router, passport, checkAuthentication) {
+    router.post("/api/login", passport.authenticate('local'), authenticationController.login);
+
+    router.get("/api/logout", authenticationController.logout);
 
     router.post("/api/register", authenticationController.register);
 

@@ -1,13 +1,12 @@
+'use strict';
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
-var evaluationModel = Schema({
+var evaluationModel = new Schema({
     date: Number,
     courseID: Number,
     description: String,
     weight: Number
 });
 
-Evaluation = mongoose.model('evaluation', evaluationModel);
-
-module.exports = Evaluation;
+module.exports = mongoose.model('evaluation', evaluationModel);

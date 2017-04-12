@@ -1,23 +1,25 @@
+'use strict';
+
 var bcrypt = require('bcrypt');
 var saltR  = 10;
 
-exports.login = function(req, res, next) {
+exports.login = function (req, res) {
     var response = {
         success: "Successfully logged in."
     };
     res.json(response);
 };
 
-exports.logout = function(req, res, next) {
+exports.logout = function (req, res) {
     req.logout();
     res.redirect('/');
 };
 
-exports.register = function(req, res, next) {
+exports.register = function (req, res) {
     var response = {};
 
     if (req.body.name && req.body.username && req.body.password) {
-        models.userModel.findOne({ username: req.body.username }, function(err, user) {
+        global.models.userModel.findOne({ username: req.body.username }, function (err, user) {
             if (err) {
                 response.error = "Invalid request.";
                 res.status(400).json(response);
@@ -26,27 +28,27 @@ exports.register = function(req, res, next) {
                     response.error = "Username already taken.";
                     res.status(400).json(response);
                 } else {
-                    var user = new models.userModel({
+                    var user = new global.models.userModel({
                         name: req.body.name,
-                        username: req.body.username, 
+                        username: req.body.username,
                         password: bcrypt.hashSync(req.body.password, saltR),
                         type: 'student',
                         courses: []
                     });
 
-                    user.save(function(err, user) {
+                    user.save(function (err, user) {
                         if (!err) {
-                            req.login(user, function(err) {
-                                if (err) { 
+                            req.login(user, function (err) {
+                                if (err) {
                                     response.error = "Could not login after creating user.";
-                                    res.status(400).json(response); 
+                                    res.status(400).json(response);
                                 }
                                 response.success = "Successfully created the user.";
                                 res.json(response);
                             });
                         } else {
-                          response.error = "Could not save user, try again.";
-                          res.status(400).json(response);
+                            response.error = "Could not save user, try again.";
+                            res.status(400).json(response);
                         }
                     });
                 }
@@ -58,7 +60,7 @@ exports.register = function(req, res, next) {
     }
 };
 
-exports.getAccountType = function(req, res, next) {
+exports.getAccountType = function (req, res) {
     var response = {};
 
     if (req.user) {

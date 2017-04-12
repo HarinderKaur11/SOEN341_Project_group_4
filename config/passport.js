@@ -1,9 +1,11 @@
+'use strict';
+
 var passport   = require('passport');
-var localStrat = require('passport-local').Strategy;
+var LocalStrat = require('passport-local').Strategy;
 var bcrypt     = require('bcrypt');
 var session    = require('express-session');
 
-module.exports = function(app) {
+module.exports = function (app) {
     var sess   = {
         name: "ohIkgFh3KKxSS57",
         secret: "soen341",
@@ -17,9 +19,9 @@ module.exports = function(app) {
 
     app.use(session(sess));
 
-    passport.use(new localStrat(
-        function(username, password, done) {
-            models.userModel.findOne({ username: username }, function (err, user) {
+    passport.use(new LocalStrat(
+        function (username, password, done) {
+            global.models.userModel.findOne({ username: username }, function (err, user) {
                 if (err) { return done(err); }
 
                 if (!user) {
@@ -35,16 +37,16 @@ module.exports = function(app) {
         }
     ));
 
-    passport.serializeUser(function(user, done) {
+    passport.serializeUser(function (user, done) {
         done(null, user);
     });
 
-    passport.deserializeUser(function(user, done) {
+    passport.deserializeUser(function (user, done) {
         done(null, user);
     });
 
     app.use(passport.initialize());
-    app.use(passport.session());   
+    app.use(passport.session());
 
     return passport;
-}
+};

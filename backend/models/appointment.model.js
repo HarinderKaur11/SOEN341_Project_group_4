@@ -1,7 +1,8 @@
+'use strict';
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
-var appointmentModel = Schema({
+var appointmentModel = new Schema({
     date: Number,
     location: String,
     teacherID: Number,
@@ -9,6 +10,4 @@ var appointmentModel = Schema({
     reason: String
 });
 
-Appointment = mongoose.model('appointment', appointmentModel);
-
-module.exports = Appointment;
+module.exports = mongoose.model('appointment', appointmentModel);
