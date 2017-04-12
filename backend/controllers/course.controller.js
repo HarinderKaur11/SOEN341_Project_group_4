@@ -69,7 +69,7 @@ exports.deleteCourse = function (req, res) {
                 response.error = "Could not fetch information.";
                 res.status(400).json(response);
             } else if (course) {
-                if (course.teacher._id === req.user._id) {
+                if (course.teacher._id == req.user._id) {
                     // Remove the course from all the students
                     for (var studentIndex = 0; studentIndex < course.students.length; studentIndex++) {
                         var currStudent = course.students[studentIndex];

@@ -6,9 +6,14 @@ var uuid    = require('uuid/v4');
 describe('Testing routes and functionality', function () {
     var app,
         name,
+        nameTwo,
         username,
+        usernameTwo,
         password,
-        loggedInAgent;
+        passwordTwo,
+        loggedInAgent,
+        loggedInAgentTwo,
+        courseIdToJoin;
 
     before(function () {
         app = require('../../app');
@@ -49,9 +54,21 @@ describe('Testing routes and functionality', function () {
             name = uuid();
             username = uuid();
             password = uuid();
+
             request(app)
                 .post('/api/register')
                 .send({ name: name, username: username, password: password })
+                .expect(200, done);
+        });
+
+        it('should make another user for testing purposes', function (done) {
+            nameTwo = uuid();
+            usernameTwo = uuid();
+            passwordTwo = uuid();
+
+            request(app)
+                .post('/api/register')
+                .send({ name: nameTwo, username: usernameTwo, password: passwordTwo })
                 .expect(200, done);
         });
 
@@ -86,6 +103,14 @@ describe('Testing routes and functionality', function () {
                 .expect(200, done);
         });
 
+        it('should log in our second user', function (done) {
+            loggedInAgentTwo = request.agent(app);
+            loggedInAgentTwo
+                .post('/api/login')
+                .send({ username: usernameTwo, password: passwordTwo })
+                .expect(200, done);
+        });
+
         it('should redirect me to the authenticated route if I am logged in', function (done) {
             loggedInAgent
                 .get('/')
@@ -95,6 +120,12 @@ describe('Testing routes and functionality', function () {
         it('should fetch authenticated files properly', function (done) {
             loggedInAgent
                 .get('/authenticated/index.html')
+                .expect(200, done);
+        });
+
+        it('should return the user type', function (done) {
+            loggedInAgent
+                .get('/api/getAccountType')
                 .expect(200, done);
         });
     });
@@ -115,15 +146,118 @@ describe('Testing routes and functionality', function () {
         });
     });
 
-    describe('course tests', function () {
-
-    });
-
     describe('logout tests', function () {
         it('should have working logout functionality', function (done) {
             loggedInAgent
                 .get('/api/logout')
                 .expect(302, done);
+        });
+
+        it('should relog the user back in', function (done) {
+            // Need to re-log the user for the changes on the user to propagate (i.e turning him into a teacher)
+            loggedInAgent
+                    .post('/api/login')
+                    .send({ username: username, password: password })
+                    .expect(200, done);
+        });
+    });
+
+    describe('course tests', function () {
+        describe('creating courses', function () {
+            it('should allow a teacher create a course', function (done) {
+                loggedInAgent
+                    .post('/api/createCourse')
+                    .send({ name: 'Biology', shortName: 'BIO 206' })
+                    .expect(200)
+                    .end(function (err, res) {
+                        if (err) {
+                            return done(err);
+                        }
+
+                        courseIdToJoin = res.body.courses[0]._id;
+
+                        done();
+                    });
+            });
+
+            it('should have an error message for an invalid request', function (done) {
+                loggedInAgent
+                    .post('/api/createCourse')
+                    .expect(400, done);
+            });
+        });
+
+        describe('joining courses', function () {
+            it('should allow a student to join a class', function (done) {
+                loggedInAgentTwo
+                    .post('/api/joinCourse')
+                    .send({ courseId: courseIdToJoin })
+                    .expect(200, done);
+            });
+
+            it('should return an error for an invalid request', function (done) {
+                loggedInAgentTwo
+                    .post('/api/joinCourse')
+                    .expect(400, done);
+            });
+
+            it('should return an error when trying to join a non-existant course', function (done) {
+                loggedInAgentTwo
+                    .post('/api/joinCourse')
+                    .send({ courseId: '1' })
+                    .expect(400, done);
+            });
+        });
+
+        describe('getting courses', function (done) {
+            it('should return all available courses', function (done) {
+                loggedInAgentTwo
+                    .get('/api/getAllCourses')
+                    .expect(200, done);
+            });
+
+            it('should return all of the courses for the current user', function (done) {
+                loggedInAgentTwo
+                    .get('/api/getMyCourses')
+                    .expect(200, done);
+            });
+        });
+
+        describe('leaving courses', function () {
+            it('should allow a student to leave a class', function (done) {
+                loggedInAgentTwo
+                    .post('/api/leaveCourse')
+                    .send({ courseId: courseIdToJoin })
+                    .expect(200, done);
+            });
+
+            it('should return an error for an invalid request', function (done) {
+                loggedInAgentTwo
+                    .post('/api/leaveCourse')
+                    .expect(400, done);
+            });
+
+            it('should rejoin the course for tests further down', function (done) {
+                loggedInAgentTwo
+                    .post('/api/joinCourse')
+                    .send({ courseId: courseIdToJoin })
+                    .expect(200, done);
+            });
+        });
+
+        describe('delete courses', function () {
+            it('should allow a teacher to delete their course', function (done) {
+                loggedInAgent
+                    .post('/api/deleteCourse')
+                    .send({ courseId: courseIdToJoin })
+                    .expect(200, done);
+            });
+
+            it('should return an error when given an invalid request', function (done) {
+                loggedInAgent
+                    .post('/api/deleteCourse')
+                    .expect(400, done);
+            });
         });
     });
 });
