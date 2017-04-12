@@ -33,6 +33,11 @@
             url: '/calendar',
             templateUrl: '/authenticated/templates/calendar.template.html'
         });
+        
+         $stateProvider.state('help', {
+            url: '/help',
+            templateUrl: '/authenticated/templates/help.template.html'
+        });
 
 		$urlRouterProvider.otherwise('/courses');
 	}]);
