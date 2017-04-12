@@ -48,13 +48,13 @@
                 <div class="name">{{ course.name }}</div>
                 <div class="teacherName">Teacher: {{ course.teacher.name }}</div>
                 <div data-ng-if="ctrl.userType == 'teacher'">
-                    <div class="students" data-ng-if="ctrl.students.length">
+                    <div class="students" data-ng-if="course.students.length">
                         <h4>Students</h4>
                         <div class="studentContainer" data-ng-repeat="student in course.students">
                             <div>{{ student.name }}</div>
                         </div>
                     </div>
-                    <div class="students" data-ng-if="!ctrl.students.length">
+                    <div class="students" data-ng-if="!course.students.length">
                         There are no students taking this course
                     </div>
                 </div>

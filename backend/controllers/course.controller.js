@@ -224,10 +224,13 @@ exports.getMyCourses = function (req, res) {
     global.models.userModel.findOne({ username: req.user.username })
                     .populate({
                                 path: "courses",
-                                populate: {
+                                populate: [{
                                     path: "teacher",
                                     model: "user"
-                                }
+                                }, {
+                                    path: "students",
+                                    model: "user"
+                                }]
                             })
                     .exec(function (err, user) {
         if (err) {
