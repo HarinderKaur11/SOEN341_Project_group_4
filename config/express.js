@@ -46,7 +46,7 @@ module.exports = function(){
 	});
 
 	// Chat API
-	var SECRET= "58c4185b-ef62-4968-aea4-9748578cb35e";
+	var SECRET= "c035841e-fddd-4153-94e2-ebfa7dfce25a";
 	var jwt= require("jsonwebtoken");
 	app.post("/tokens", function(req, res) {
 	    res.end(jwt.sign({ device: req.body.device }, SECRET, { expiresIn: 86400 }));
