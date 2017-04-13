@@ -175,7 +175,6 @@ describe('Testing routes and functionality', function () {
                         }
 
                         courseIdToJoin = res.body.courses[0]._id;
-
                         done();
                     });
             });
