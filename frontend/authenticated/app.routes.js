@@ -24,21 +24,21 @@
             templateUrl: '/authenticated/templates/grades.template.html'
         });
 		
-	    $stateProvider.state('register', {
+	$stateProvider.state('register', {
             url: '/register',
             templateUrl: '/templates/register.template.html'
         });
 		
-		 $stateProvider.state('calendar', {
+	$stateProvider.state('calendar', {
             url: '/calendar',
             templateUrl: '/authenticated/templates/calendar.template.html'
         });
         
-         $stateProvider.state('help', {
+        $stateProvider.state('help', {
             url: '/help',
             templateUrl: '/authenticated/templates/help.template.html'
         });
 
-		$urlRouterProvider.otherwise('/courses');
+	$urlRouterProvider.otherwise('/courses');
 	}]);
 })(angular);
