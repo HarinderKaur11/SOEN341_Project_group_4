@@ -19,7 +19,7 @@ exports.setUserType = function (req, res) {
                     }
                 });
             } else {
-                response.error = "Could not find the specified user";
+                response.error = "Could not find the specified user.";
                 res.status(400).json(response);
             }
         });
