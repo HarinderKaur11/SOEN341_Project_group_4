@@ -32,7 +32,7 @@
                     }
                 });
             } else {
-                vm.errorMessage = "Username and password cannot be empty";
+                vm.errorMessage = "Username and password cannot be empty.";
             }
         };
     }
