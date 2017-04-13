@@ -19,7 +19,7 @@
                         <div class="numberOfStudents">Students Attending: {{ course.students.length }}</div>
                     </div>
                     <div data-ng-hide="ctrl.courses.length">
-                        There are no courses, come back later.
+                        There are currently no courses, come back later.
                     </div>
                 </div>
             </div>
@@ -55,12 +55,12 @@
                         </div>
                     </div>
                     <div class="students" data-ng-if="!course.students.length">
-                        There are no students taking this course
+                        There are currently no students taking this course.
                     </div>
                 </div>
             </div>
             <div data-ng-hide="ctrl.myCourses.length">
-                You have no courses
+                You have no courses at the moment.
             </div>
         </div>
     </div>
