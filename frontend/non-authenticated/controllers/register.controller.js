@@ -10,12 +10,13 @@
         vm.password_one = '';
         vm.password_two = '';
 
+        //function that will verify the registration process
         vm.register = function() {
             vm.errorMessage = "";
             vm.password_two_error = "";
             
             if (vm.password_one !== vm.password_two) {
-                vm.password_two_error = "Passwords must match.";
+                vm.password_two_error = "Both passwords must match.";
             }
             
             if (!vm.username || !vm.password_one || !vm.password_two || !vm.name){
@@ -37,7 +38,7 @@
                     } else {
                         console.log(response.data.error);
                         vm.submitted = true;
-                    }
+                      }
                 }).catch(function error(response) {
                     if (response.status !== 200) {
                         vm.errorMessage = response.data.error;
