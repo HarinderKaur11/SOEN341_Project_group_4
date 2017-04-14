@@ -28,6 +28,16 @@
             url: '/register',
             templateUrl: '/templates/register.template.html'
         });
+
+    $stateProvider.state('chat', {
+            url: '/chat',
+            templateUrl: '/authenticated/templates/chat.html'
+        });
+
+        $stateProvider.state('groupchat', {
+            url: '/groupchat',
+            templateUrl: '/authenticated/templates/groupchat.template.html'
+        });
 		
 	$stateProvider.state('calendar', {
             url: '/calendar',
