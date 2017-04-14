@@ -34,6 +34,11 @@
             templateUrl: '/authenticated/templates/chat.html'
         });
 
+        $stateProvider.state('prechat', {
+            url: '/prechat',
+            templateUrl: '/authenticated/templates/prechat.html'
+        });
+
         $stateProvider.state('groupchat', {
             url: '/groupchat',
             templateUrl: '/authenticated/templates/groupchat.template.html'

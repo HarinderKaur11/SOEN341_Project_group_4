@@ -8,7 +8,10 @@ function login(){
     alert('Please enter user nickname');
     return;
   }
-  window.location.href = 'chat.html?userid=' + encodeURIComponent(userId) + '&nickname=' + encodeURIComponent(nickname);
+
+var landingUrl = "http://" + $window.location.host + "/chat";
+
+  window.location.href =  landingUrl +'+?userid=' + encodeURIComponent(userId) + '&nickname=' + encodeURIComponent(nickname);
 }
 
 $('#user_nickname').change(function() {
